@@ -1,32 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-const HelloWorld = "Hello World";
-const HelloWorld2 = {
-  first: "Hello",
-  second: "World"
-}
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+// import Register from './pages/auth/Register';
+//import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p> Variable: { HelloWorld } </p>
-        <p> Object: { HelloWorld2.first + " " + HelloWorld2.second } </p>
-      </header>
-    </div>
+    <Fragment>
+      <Router>
+        <Routes>
+          {/* Se espcifica la accion a ejecutar o la ruta a donde ir */}
+          <Route path='/' exact element={ <Home /> } />
+          <Route path='/login' exact element={ <Login /> } />
+          <Route path='/register' exact element={ <Register /> } />
+        </Routes>
+      </Router>
+    </Fragment>
   );
 }
 

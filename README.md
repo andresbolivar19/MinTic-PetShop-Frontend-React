@@ -69,19 +69,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-1- Crear pagina en ruta src/pages/
-    * Copiar la seccion <div class="register-box"> de la pagina a copiar
-    * Como es codigo HTML lo copiado, seleccionar, clic derecho y "convertir de HTML a JSX"
-    * Formatear lo copiado a TypeScript
-    * Modificar "a href=" por "link to="
-        <a href="../../index2.html" className="h1"><b>Admin</b>LTE</a>
-        <Link to="{#}" className="h1"><b>Admin</b>LTE</Link>
-        <Link to={"/register"} className="btn btn-block btn-success">
-    * Eliminar comentarios
-2- Adicionar la ruta en el archivo src/App.js
-3- En la pagina/boton agregar la accion para que dirija a la ruta
-Change:
 
+### Notas
 
+1- Crear pagina en ruta src/pages/  
+    * Copiar la seccion < div class="register-box" > de la pagina a copiar  
+    * Como es codigo HTML lo copiado, seleccionar, clic derecho y "convertir de HTML a JSX"  
+    * Formatear lo copiado a TypeScript  
+    * Modificar "a href=" por "link to="  
+        < a href="../../index2.html" className="h1"><b>Admin</b>LTE</>  
+        < Link to="{#}" className="h1"><b>Admin</b>LTE</>  
+        < Link to={"/register"} className="btn btn-block btn-success">  
+    * Eliminar comentarios  
+2- Adicionar la ruta en el archivo src/App.js  
+3- En la pagina/boton agregar la accion para que dirija a la ruta  
+  
 Hooks permite enviar la informacion al backend
 https://reactjs.org/docs/hooks-overview.html

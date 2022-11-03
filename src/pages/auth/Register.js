@@ -57,7 +57,7 @@ const Register = () => {
             };
             const response = await APIInvoke.invokePOST('/user/save', data);
 
-            if ( response.message == 'User is already registered' ){
+            if ( response.message === 'User is already registered' ){
                 swal({
                     title: "User exists",
                     icon: "warning",
@@ -90,80 +90,19 @@ const Register = () => {
                         }
                     }
                 });
+
+                // Para que limpie los campos despues de ingresar usuario correctamente
+                setUser(
+                    {
+                        name: '',
+                        email: '',
+                        password: '',
+                        confirm: ''
+                    }
+                );
             }
         }
     }
-
-        
-
-    // const saveUser = async () => {
-
-    //     if( password !== confirm ){
-
-    //         swal({
-    //             title: 'Error',
-    //             icon: 'error',
-    //             text: 'Passwords must match',
-    //             buttons:{
-    //                 confirm:{
-    //                     text: 'Ok',
-    //                     value: true,
-    //                     visible: true,
-    //                     className: 'btn btn-danger',
-    //                     closeModal: true
-    //                 }
-    //             }
-    //         });
-
-    //     }else{
-
-    //         const body = {
-    //             name: user.name,
-    //             email: user.email,
-    //             password: user.password 
-    //         }
-
-    //         const response = await APIInvoke.invokePOST(`/user/save`, body );
-
-    //         if ( response.message === 'User is already registered' ){
-                
-    //             swal({
-    //                 title: 'User exists!',
-    //                 icon: 'warning',
-    //                 text: 'User is already registered',
-    //                 buttons:{
-    //                     confirm:{
-    //                         text: 'Ok',
-    //                         value: true,
-    //                         visible: true,
-    //                         className: 'btn btn-warning',
-    //                         closeModal: true
-    //                     }
-    //                 }
-    //             });
-    
-    //         } else {
-
-    //             swal({
-    //                 title: 'User created!',
-    //                 icon: 'success',
-    //                 text: 'User registered successfully',
-    //                 buttons:{
-    //                     confirm:{
-    //                         text: 'Ok',
-    //                         value: true,
-    //                         visible: true,
-    //                         className: 'btn btn-success',
-    //                         closeModal: true
-    //                     }
-    //                 }
-    //             });
-
-    //         }
-
-    //     }
-
-    // }
 
     useEffect( () => {
         document.getElementById("name").focus();

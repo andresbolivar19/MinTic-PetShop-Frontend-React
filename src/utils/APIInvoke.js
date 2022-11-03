@@ -1,6 +1,7 @@
 import config from '../config'
 
 class APIInvoke {
+
     async invokeGET(resource, queryParams) {
 
         queryParams = queryParams || []
@@ -11,7 +12,7 @@ class APIInvoke {
         if (token === "") {
             bearer = "";
         } else {
-            bearer = `${token}`;
+            bearer = `Bearer ${token}`;
         }
 
         const data = {
@@ -33,7 +34,7 @@ class APIInvoke {
         if (token === "") {
             bearer = "";
         } else {
-            bearer = `${token}`;
+            bearer = `Bearer ${token}`;
         }
 
         const data = {
@@ -52,25 +53,27 @@ class APIInvoke {
     async invokePOST(resource, body) {
 
         const token = localStorage.getItem("token");
+        
         let bearer;
+        
         if (token === "") {
             bearer = "";
         } else {
-            bearer = `${token}`;
+            bearer = `Bearer ${token}`;
         }
 
         const data = {
             method: 'POST',
-            body: JSON.stringify(body),
+            body: JSON.stringify( body ),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': bearer
             }
         }
-        const url = `${config.api.baseURL}${resource}`
-        // El metodo fetch abre un recurso
-        let response = (await (await fetch(url, data)).json())
-        return response
+        
+        const url = `${config.api.baseURL}${resource}`;
+        let response = (await (await fetch(url, data)).json());
+        return response;
     }
 
     async invokeDELETE(resource) {
@@ -80,7 +83,7 @@ class APIInvoke {
         if (token === "") {
             bearer = "";
         } else {
-            bearer = `${token}`;
+            bearer = `Bearer ${token}`;
         }
 
         const data = {
@@ -96,4 +99,4 @@ class APIInvoke {
     }
 }
 
-export default new APIInvoke()
+export default new APIInvoke();

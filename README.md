@@ -70,39 +70,42 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
+### Notas
+
+1.  Crear pagina en ruta src/pages/  
+    - Copiar la seccion ``` <div class="register-box" > ``` de la pagina a copiar  
+    - Como es codigo HTML lo copiado, seleccionar, clic derecho y "convertir de HTML a JSX"  
+    - Formatear lo copiado a TypeScript  
+    - Modificar 
+    ``` "a href=" ``` por ``` "link to="  ```
+        ``` 
+        <a href="../../index2.html" className="h1"><b>Admin</b>LTE</a>  
+        <Link to="{#}" className="h1"><b>Admin</b>LTE</Link>  
+        <Link to={"/register"} className="btn btn-block btn-success">  
+        ```
+    - Eliminar comentarios  
+2. Adicionar la ruta en el archivo src/App.js  
+3. En la pagina/boton agregar la accion para que dirija a la ruta  
+  
+Hooks permite enviar la informacion al backend
+https://reactjs.org/docs/hooks-overview.html  
+
+
 ### Github-Pages
-- Install Gh-pages  
+1. Install Gh-pages  
 npm install --save-dev gh-pages  
   
-- Add in package.json  
+2. Add in package.json  
 "homepage":"https://yourusername.github.io/repository-name"  
   
-- Add scipts  
+3. Add scipts  
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",  
   
-- Build  
+4. Build  
 npm run build  
   
-- Deploy  
+5. Deploy  
 npm run deploy  
   
 Fuente: https://platzi.com/tutoriales/1548-react/4065-guia-para-usar-github-pages-en-tus-proyectos-de-reactjs/  
-
-
-### Notas
-
-1- Crear pagina en ruta src/pages/  
-    * Copiar la seccion < div class="register-box" > de la pagina a copiar  
-    * Como es codigo HTML lo copiado, seleccionar, clic derecho y "convertir de HTML a JSX"  
-    * Formatear lo copiado a TypeScript  
-    * Modificar "a href=" por "link to="  
-        < a href="../../index2.html" className="h1"><b>Admin</b>LTE</>  
-        < Link to="{#}" className="h1"><b>Admin</b>LTE</>  
-        < Link to={"/register"} className="btn btn-block btn-success">  
-    * Eliminar comentarios  
-2- Adicionar la ruta en el archivo src/App.js  
-3- En la pagina/boton agregar la accion para que dirija a la ruta  
-  
-Hooks permite enviar la informacion al backend
-https://reactjs.org/docs/hooks-overview.html

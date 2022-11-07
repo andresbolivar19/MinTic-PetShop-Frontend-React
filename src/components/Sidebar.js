@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
         return (
@@ -30,19 +30,20 @@ const Sidebar = () => {
                 <nav className="mt-2">
                     <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li className="nav-item">
-                            <Link to={ "/admin" } className="nav-link">
+                        {/* NavLink permite dar color a la seccion del menu que sea seleccionada, mejor que usar Link */}
+                            <NavLink to={ "/admin" } className="nav-link" end>
                                 <i className="nav-icon fas fa-tachometer-alt" /> <p> Home </p>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to={ "/admin/users" } className="nav-link">
+                            <NavLink to={ "/admin/users" } className="nav-link">
                                 <i className="nav-icon far fa-user" /> <p> Users </p>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to={ "/admin/post" } className="nav-link">
+                            <NavLink to={ "/admin/post" } className="nav-link">
                                 <i className="nav-icon fa fa-book" /> <p> Post </p>
-                            </Link>
+                            </NavLink>
                         </li>
                     </ul>
                 </nav>

@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     
+    const navigate = useNavigate();
+
+    const logout = (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        navigate('/login');
+    }
+
     return (   
         <nav className="main-header navbar navbar-expand navbar-white navbar-light">
             <ul className="navbar-nav">
@@ -121,10 +129,13 @@ const Navbar = () => {
                 </li>
 
                 <li className="nav-item">
-                    <Link className="btn btn-sm btn-danger" data-widget="fullscreen" role="button">
+                    <button 
+                        className="btn btn-sm btn-danger" 
+                        onClick={logout}
+                        role="button">
                         <i className="fas fa-sign-out" />
                         Cerrar Sesion
-                    </Link>
+                    </button>
                 </li>
 
             </ul>

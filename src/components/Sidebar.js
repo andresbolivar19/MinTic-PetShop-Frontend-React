@@ -1,7 +1,30 @@
-import React from 'react'
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import APIInvoke from '../utils/APIInvoke';
 
 const Sidebar = () => {
+
+
+    const navigate = useNavigate();
+
+    useEffect( () => {
+    
+        async function fetchData() {
+            const response = await APIInvoke.invokePOST(`/auth/verify`, {} );
+
+            if( response.error !== undefined ){
+                navigate('/login');
+                return;
+            }
+
+            document.getElementById("user").innerHTML = response.data.name;
+        }
+
+        fetchData();
+
+    }, []);
+
+
         return (
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
             <Link to={ "#" } className="brand-link">
@@ -14,7 +37,7 @@ const Sidebar = () => {
                         <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div className="info">
-                        <Link to={ "#" } className="d-block">Alexander Pierce</Link>
+                        <Link to={ "#" } id="user" className="d-block">Alexander Pierce</Link>
                     </div>
                 </div>
                 <div className="form-inline">
@@ -37,7 +60,7 @@ const Sidebar = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink to={ "/admin/users" } className="nav-link">
-                                <i className="nav-icon far fa-user" /> <p> Users </p>
+                                <i className="nav-icon fa fa-user" /> <p> Users </p>
                             </NavLink>
                         </li>
                         <li className="nav-item">

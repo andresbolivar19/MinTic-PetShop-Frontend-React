@@ -81,7 +81,7 @@ const Login = () => {
             localStorage.setItem('loggedUser', response.data);
             localStorage.setItem('token', response.token);
             
-            navigate('/profile');
+            navigate('/admin');
 
             console.log("TOKEN: " + response.token);
             console.log("loggedUser: " + response.loggedUser);

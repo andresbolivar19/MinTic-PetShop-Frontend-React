@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 
 const Dashboard = () => {
   return (
-    <div class="wrapper">
+    <div className="wrapper">
         {/* Agrega un componete en este caso la barra de navegación */}
         <Navbar></Navbar>
         <Sidebar></Sidebar>

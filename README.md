@@ -80,7 +80,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     ``` "a href=" ``` por ``` "link to="  ```
         ``` 
         <a href="../../index2.html" className="h1"><b>Admin</b>LTE</a>  
-        <Link to="{#}" className="h1"><b>Admin</b>LTE</Link>  
+        <Link to={ "#" } className="h1"><b>Admin</b>LTE</Link>  
         <Link to={"/register"} className="btn btn-block btn-success">  
         ```
     - Eliminar comentarios  
@@ -109,3 +109,10 @@ npm run build
 npm run deploy  
   
 Fuente: https://platzi.com/tutoriales/1548-react/4065-guia-para-usar-github-pages-en-tus-proyectos-de-reactjs/  
+
+### Components
+Permite agregar secciones de una pagina por partes
+
+rafce: Permite crear el componente react en Visual Estudio
+
+Consultar las fuentes, iconos: https://fontawesome.com/v4/icons/

@@ -8,7 +8,7 @@ const Profile = () => {
     const token = localStorage.getItem("token");
 
     const loadProfile = async () => {
-        const response = await APIInvoke.invokePOST('/auth/test', {});
+        const response = await APIInvoke.invokePOST('/auth/verify', {});
         return response.data.email;
     }
 

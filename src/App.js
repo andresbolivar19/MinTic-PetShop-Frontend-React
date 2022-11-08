@@ -7,6 +7,7 @@ import Profile from './pages/auth/Profile';
 import Dashboard from './pages/admin/Dashboard';
 import Users from './pages/admin/Users';
 import Post from './pages/admin/Post';
+import Pet from './pages/admin/Pet';
 // import Register from './pages/auth/Register';
 //import Home from './pages/Home';
 
@@ -17,12 +18,14 @@ function App() {
         <Routes>
           {/* Se espcifica la accion a ejecutar o la ruta a donde ir */}
           <Route path='/' exact element={ <Home /> } />
+          <Route path='/React-U21' exact element={ <Home /> } />
           <Route path='/login' exact element={ <Login /> } />
           <Route path='/register' exact element={ <Register /> } />
           <Route path='/profile' exact element={ <Profile /> } />
           <Route path='/admin' exact element={ <Dashboard /> } />
           <Route path='/admin/users' exact element={ <Users /> } />
           <Route path='/admin/post' exact element={ <Post /> } />
+          <Route path='/admin/pet' exact element={ <Pet /> } />
         </Routes>
       </Router>
     </Fragment>
@@ -30,4 +33,3 @@ function App() {
 }
 
 export default App;
-

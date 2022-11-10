@@ -110,6 +110,12 @@ npm run deploy
   
 Fuente: https://platzi.com/tutoriales/1548-react/4065-guia-para-usar-github-pages-en-tus-proyectos-de-reactjs/  
 
+
+### Github-Action to Heroku
+
+Fuente: https://github.com/marketplace/actions/deploy-to-heroku  
+
+
 ### Components
 Permite agregar secciones de una pagina por partes
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
-import APIInvoke from '../../utils/APIInvoke'
-import Navbar from '../../components/Navbar'
-import Sidebar from '../../components/Sidebar'
-import Footer from '../../components/Footer'
-import Header from '../../components/Header'
+import APIInvoke from '../../../utils/APIInvoke'
+import Navbar from '../../../components/Navbar'
+import Sidebar from '../../../components/Sidebar'
+import Footer from '../../../components/Footer'
+import Header from '../../../components/Header'
 import swal from 'sweetalert';
 
 const Users = () => {
@@ -88,6 +88,10 @@ const Users = () => {
             <Header title={"List Users"} module={"Users"} ></Header>
   
                 <section className="content">
+
+                <Link to={"/admin/users/create"} className="btn btn-sm btn-success">Create user</Link>
+                <br/> <br/>
+            
                   
                 <table className="table table-striped projects">
                         <thead>

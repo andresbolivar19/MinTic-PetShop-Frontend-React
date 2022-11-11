@@ -17,7 +17,7 @@ const Sidebar = () => {
                 return;
             }
 
-            document.getElementById("user").innerHTML = response.data.name;
+            document.getElementById("user").innerHTML = response.message.name;
         }
 
         fetchData();
@@ -64,12 +64,12 @@ const Sidebar = () => {
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to={ "/admin/post" } className="nav-link">
+                            <NavLink to={ "/admin/posts" } className="nav-link">
                                 <i className="nav-icon fa fa-book" /> <p> Post </p>
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to={ "/admin/pet" } className="nav-link">
+                            <NavLink to={ "/admin/pets" } className="nav-link">
                                 <i className="nav-icon fa fa-book" /> <p> Pet </p>
                             </NavLink>
                         </li>

@@ -1,8 +1,8 @@
 module.exports = {
     api:{
         // localhost
-        baseURL: 'http://localhost:5000'
+        //baseURL: 'http://localhost:5000'
         // Server
-        //baseURL: 'https://petshop-mintic-backend.herokuapp.com'
+        baseURL: 'https://petshop-mintic-backend.herokuapp.com'
     }
 };

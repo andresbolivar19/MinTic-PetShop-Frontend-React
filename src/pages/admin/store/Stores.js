@@ -7,29 +7,29 @@ import Navbar from '../../../components/Navbar';
 import Sidebar from '../../../components/Sidebar';
 import APIInvoke from '../../../utils/APIInvoke';
 
-const Pets = () => {
+const Stores = () => {
 
-  const [pets, setPets] = useState(
+  const [stores, setStores] = useState(
     []
   );
 
   const [ search, setSearch] = useState("")
   // Para llamar la ruta del back y traer los datos
-  const loadPets = async () => {
+  const loadStores = async () => {
 
-    const response = await APIInvoke.invokeGET(`/pet/list`);
-    setPets(response);
+    const response = await APIInvoke.invokeGET(`/store/list`);
+    setStores(response);
   };
 
   // Funcion para eliminar con el boton
-  const deletePet = async (e, id) => {
+  const deleteStore = async (e, id) => {
 
     e.preventDefault();
 
     swal({
-      title: 'Deleted pet',
+      title: 'Deleted store',
       icon: 'error',
-      text: `Are you sure you want to delete this pet?`,
+      text: `Are you sure you want to delete this store?`,
       buttons: {
         confirm: {
           text: 'Delete',
@@ -50,12 +50,12 @@ const Pets = () => {
 
       if (value) {
 
-        const response = await APIInvoke.invokeDELETE(`/pet/${id}`);
+        const response = await APIInvoke.invokeDELETE(`/store/${id}`);
 
-        if (response.message === "Pet deleted") {
+        if (response.message === "Store deleted") {
 
           swal({
-            title: 'Pet deleted',
+            title: 'Store deleted',
             icon: 'success',
             text: `Deleted`,
             buttons: {
@@ -70,7 +70,7 @@ const Pets = () => {
           });
 
           // Carga de nuevo la info, despues de eliminar
-          loadPets();
+          loadStores();
 
         }
 
@@ -82,8 +82,8 @@ const Pets = () => {
 
   const searchEvent = async () => {
 
-    const response = await APIInvoke.invokeGET(`/pet/list/${search}`);
-    setPets(response);
+    const response = await APIInvoke.invokeGET(`/store/list/${search}`);
+    setStores(response);
 
   };
 
@@ -93,7 +93,7 @@ const Pets = () => {
 
 
   useEffect(() => {
-    loadPets();
+    loadStores();
   }, []);
 
 
@@ -108,13 +108,13 @@ const Pets = () => {
       <div className='content-wrapper'>
 
         <Header
-          title={"Pets list"}
-          module={"Pets"}
+          title={"Stores list"}
+          module={"Stores"}
         ></Header>
 
         <div className='row'>
           <div className='col-7'>
-          <Link to={"/admin/pets/create"} className="btn btn-sm btn-success" > Create pet </Link>
+          <Link to={"/admin/stores/create"} className="btn btn-sm btn-success" > Create store </Link>
           </div>
 
           <div className='col-4'>
@@ -129,10 +129,10 @@ const Pets = () => {
           <thead>
             <tr>
               <th style={{ width: '1%' }}> idPet </th>
-              <th style={{ width: '20%' }}> Name </th>
-              <th style={{ width: '1%' }}> Category </th>
-              <th style={{ width: '15%' }}> Photo </th>
-              <th> Price Unit</th>
+              <th style={{ width: '20%' }}> Quantity </th>
+              <th style={{ width: '1%' }}> Address </th>
+              <th style={{ width: '1%' }}> Price </th>
+              <th> Status</th>
               <th style={{ width: '20%' }} className="text-center"> Update </th>
               <th style={{ width: '20%' }}> </th>
             </tr>
@@ -141,34 +141,28 @@ const Pets = () => {
 
             {/* Para imprimir los valores de la base de datos */}
             {
-              pets.map(
+              stores.map(
                 item =>
                 // React exige una llave unica para identificar los valores a mostrar o si no genera error por consola
                 // Error: Each child in a list should have a unique "key" prop.
                   <tr key={ item._id }>
                     <td> {item.idPet} </td>
-                    <td> {item.name} </td>
-                    <td> {item.category} </td>
-                    <td className="project_progress">
-                      <img alt="Avatar" className="table-avatar" src={item.photoUrls} />
-                    </td>
+                    <td> {item.quantity} </td>
+                    <td> {item.address} </td>
                     <td> {item.price} </td>
+                    <td> {item.status} </td>
                     <td className="project-state"> {item.updatedAt} </td>
                     <td className="project-actions text-right">
-                    <Link className="btn btn-success btn-sm" to={`/admin/stores/create/`} title="Store">
-                        <i className="fas fa-cart-plus"> </i>
-                      </Link>
-                      &nbsp;&nbsp;
-                      <Link className="btn btn-primary btn-sm" to={`/admin/pets/view/${ item._id }`} title="View">
+                      <Link className="btn btn-primary btn-sm" to={`/admin/stores/view/${ item._id }`} title="View">
                         <i className="fas fa-eye"> </i>
                       </Link>
                       &nbsp;&nbsp;
-                      <Link className="btn btn-info btn-sm" to={`/admin/pets/edit/${ item._id }`}  title="Edit">
+                      <Link className="btn btn-info btn-sm" to={`/admin/stores/edit/${ item._id }`}  title="Edit">
                         <i className="fas fa-pencil-alt"> </i>
                       </Link>
                       &nbsp;&nbsp;
                       <button className="btn btn-danger btn-sm"
-                        onClick={(e) => { deletePet(e, item._id) }}
+                        onClick={(e) => { deleteStore(e, item._id) }}
                         title='Delete'> <i className="fas fa-trash"> </i>
                       </button>
                     </td>
@@ -186,4 +180,4 @@ const Pets = () => {
   )
 }
 
-export default Pets;
+export default Stores;

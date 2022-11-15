@@ -40,16 +40,6 @@ const Sidebar = () => {
                         <Link to={ "#" } id="user" className="d-block"> </Link>
                     </div>
                 </div>
-                <div className="form-inline">
-                    <div className="input-group" data-widget="sidebar-search">
-                        <input className="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" />
-                        <div className="input-group-append">
-                            <button className="btn btn-sidebar">
-                                <i className="fas fa-search fa-fw" />
-                            </button>
-                        </div>
-                    </div>
-                </div>
                 <nav className="mt-2">
                     <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li className="nav-item">
@@ -70,7 +60,12 @@ const Sidebar = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink to={ "/admin/pets" } className="nav-link">
-                                <i className="nav-icon fa fa-book" /> <p> Pet </p>
+                                <i className="nav-icon fa fa-paw" /> <p> Pets </p>
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to={ "/admin/stores" } className="nav-link">
+                                <i className="nav-icon fa fa-shopping-cart" /> <p> Store </p>
                             </NavLink>
                         </li>
                     </ul>

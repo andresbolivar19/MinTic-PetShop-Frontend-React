@@ -17,14 +17,18 @@ const CreatePet = () => {
     // Importante que los nombre definidos sean iguales a los que se penen en el campo del formulario para que funcione el onChange
     const [ pet, setPet ] = useState(
         {
-            title:'',
-            content:'',
+            idPet:'',
+            name:'',
+            category:'',
+            photoUrls:'',
+            price:'',
             status:''
+            
         }
     )
 
     // Variables para guardar el contenido del objeto pet
-    const { title, content, status } = pet;
+    const { idPet, name, category, photoUrls, price, status } = pet;
 
     // Metodo onChange
     // "...pet" para que muestre todo el contenido del objeto y lo agrega como diccionario
@@ -44,12 +48,15 @@ const CreatePet = () => {
     const savePet = async () => { 
         
         const data = {
-            title: pet.title,
-            content: pet.content,
+            idPet: pet.idPet,
+            name: pet.name,
+            category: pet.category,
+            photoUrls: pet.photoUrls,
+            price: pet.price,
             status: pet.status
         }
 
-        const response = await APIInvoke.invokePET(`/pet/save`, data);
+        const response = await APIInvoke.invokePOST(`/pet/save`, data);
 
         if( response.message === "Pet created" ){
 
@@ -91,7 +98,7 @@ const CreatePet = () => {
     }
 
     useEffect( () => { 
-        document.getElementById("title").focus(); 
+        document.getElementById("name").focus(); 
     },[] );
 
     return (
@@ -120,27 +127,60 @@ const CreatePet = () => {
                                     </div>
                                     <div className="card-body">
 
-                                        <div className="form-group">
-                                            <label htmlFor="title">Pet title</label>
+                                    <div className="form-group">
+                                            <label htmlFor="idPet">Pet idPet</label>
                                             <input type="text" 
-                                            id="title" 
-                                            name="title" 
-                                            value={ title }
+                                            id="idPet" 
+                                            name="idPet" 
+                                            value={ idPet }
                                             onChange = { onChange }
-                                            className="form-control"
-                                            required />
+                                            required/>
                                         </div>
 
                                         <div className="form-group">
-                                            <label htmlFor="content">Pet content</label>
-                                            <textarea id="content" name="content" 
-                                            className="form-control" 
-                                            rows={4} 
-                                            value={ content }
+                                            <label htmlFor="name">Pet name</label>
+                                            <input type="text" 
+                                            id="name" 
+                                            name="name" 
+                                            value={ name }
+                                            onChange = { onChange }
+                                            required/>
+                                        </div>
+
+                                    <div className="form-group">
+                                            <label htmlFor="category">Category</label>
+                                            <select id="category" name="category" 
+                                            className="form-control custom-select"
+                                            value={ category }
+                                            onChange = { onChange }
+                                            required >
+                                                <option value={""} defaultValue disabled>Select one</option>
+                                                <option value={"Dogs"}> Dogs</option>
+                                                <option value={"Cats"}> Cats</option>
+                                                <option value={"Others"}> Others</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label htmlFor="photoUrls">Pet photoUrls</label>
+                                            <input type="text" 
+                                            id="photoUrls" 
+                                            name="photoUrls" 
+                                            value={ photoUrls }
                                             onChange = { onChange }
                                             required/>
                                         </div>
                                         
+                                        <div className="form-group">
+                                            <label htmlFor="price">Pet price</label>
+                                            <input type="number" 
+                                            id="price" 
+                                            name="price" 
+                                            value={ price }
+                                            onChange = { onChange }
+                                            required/>
+                                        </div>
+
                                         <div className="form-group">
                                             <label htmlFor="status">Status</label>
                                             <select id="status" name="status" 
@@ -149,9 +189,8 @@ const CreatePet = () => {
                                             onChange = { onChange }
                                             required >
                                                 <option value={""} defaultValue disabled>Select one</option>
-                                                <option value={"Published"}> Published</option>
-                                                <option value={"On review"}> On review</option>
-                                                <option value={"Draft"}> Draft</option>
+                                                <option value={"Active"}> Active</option>
+                                                <option value={"Inactive"}> Inactive</option>
                                             </select>
                                         </div>
                         

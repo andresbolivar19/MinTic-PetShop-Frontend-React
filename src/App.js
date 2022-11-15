@@ -11,6 +11,11 @@ import EditPet from './pages/admin/pet/EditPet';
 import Pets from './pages/admin/pet/Pets';
 import ViewPet from './pages/admin/pet/ViewPet';
 
+import CreateStore from './pages/admin/store/CreateStore';
+import EditStore from './pages/admin/store/EditStore';
+import Stores from './pages/admin/store/Stores';
+import ViewStore from './pages/admin/store/ViewStore';
+
 import CreateUser from './pages/admin/user/CreateUser';
 import Users from './pages/admin/user/Users';
 import Login from './pages/auth/Login';
@@ -45,6 +50,11 @@ function App() {
           <Route path='/admin/pets/view/:id' exact element={ <ViewPet /> } />
           <Route path='/admin/pets/create' exact element={ <CreatePet /> } />
           <Route path='/admin/pets/edit/:id' exact element={ <EditPet /> } />
+
+          <Route path='/admin/stores' exact element={ <Stores /> } />
+          <Route path='/admin/stores/view/:id' exact element={ <ViewStore /> } />
+          <Route path='/admin/stores/create' exact element={ <CreateStore /> } />
+          <Route path='/admin/stores/edit/:id' exact element={ <EditStore /> } />
 
         </Routes>
       </Router>

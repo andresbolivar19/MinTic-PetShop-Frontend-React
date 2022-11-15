@@ -8,65 +8,62 @@ import Navbar from '../../../components/Navbar'
 import Sidebar from '../../../components/Sidebar'
 import APIInvoke from '../../../utils/APIInvoke'
 
-const EditPet = () => {
+const EditStore = () => {
 
-    // Para cambiar de pagina, por ejemplo despues de guardar un pet
+    // Para cambiar de pagina, por ejemplo despues de guardar un store
     let navigate = useNavigate();
 
      // Guarda el ID de la publicacion que se quiere editar
      const { id } = useParams();
 
-    // No esta usuario por que en el backend petController.js envia el pet con el usuario logueado
+    // No esta usuario por que en el backend storeController.js envia el store con el usuario logueado
     // Importante que los nombre definidos sean iguales a los que se penen en el campo del formulario para que funcione el onChange
-    const [ pet, setPet ] = useState(
+    const [ store, setStore ] = useState(
         {
             idPet:'',
-            name:'',
-            category:'',
-            photoUrls:'',
+            quantity:'',
+            address:'',
             price:'',
             status:''
-            
         }
     )
 
-    // Variables para guardar el contenido del objeto pet
-    const { _id, idPet, name, category, photoUrls, price, status, user } = pet;
+    // Variables para guardar el contenido del objeto store
+    const { _id, idPet, quantity, address, price, status, user } = store;
 
     // Metodo onChange
-    // "...pet" para que muestre todo el contenido del objeto y lo agrega como diccionario
+    // "...store" para que muestre todo el contenido del objeto y lo agrega como diccionario
     //[ e.target.name ] : e.target.value para adicionar lo que se pone por teclaro en el campo
     const onChange = (e) => { 
-        setPet({
-            ...pet,
+        setStore({
+            ...store,
             [ e.target.name ] : e.target.value
         });    
     }
 
     const onSubmit = (e) => { 
         e.preventDefault();
-        savePet();
+        saveStore();
     }
 
-    const savePet = async () => { 
+    const saveStore = async () => { 
         
         const data = {
-            idPet: pet.idPet,
-            category: pet.category,
-            name: pet.name,
-            photoUrls: pet.photoUrls,
-            price: pet.price,
-            status: pet.status
+            idPet: store.idPet,
+            quantity: store.quantity,
+            address: store.address,
+            price: store.price,
+            status: store.status
         }
 
-        const response = await APIInvoke.invokePUT(`/pet/${id}`, data);
+        const response = await APIInvoke.invokePUT(`/store/${id}`, data);
 
-        if( response.message === "Pet updated" ){
+        if( response.message === "Store updated" ){
 
             swal({
-                title: 'Pet updated',
+                title: 'Store updated',
                 icon: 'success',
-                text: `Pet updated successfully`,
+                text: `Store updated successfully`,
                 buttons: {
                     confirm: {
                         text: 'Close',
@@ -77,7 +74,7 @@ const EditPet = () => {
                     }
                 }
             }).then(
-                navigate('/admin/pets')
+                navigate('/admin/stores')
             );
 
         }else{
@@ -101,15 +98,15 @@ const EditPet = () => {
     }
 
     useEffect( () => { 
-        async function loadPet(){
-            const response = await APIInvoke.invokeGET(`/pet/${id}`);
-            setPet(response);
+        async function loadStore(){
+            const response = await APIInvoke.invokeGET(`/store/${id}`);
+            setStore(response);
             console.log(response);
             return;
         }
 
-        loadPet();
-        document.getElementById("name").focus(); 
+        loadStore();
+        document.getElementById("idPet").focus(); 
     },[] );
 
     return (
@@ -121,8 +118,8 @@ const EditPet = () => {
             <div className='content-wrapper'> 
             
                 <Header
-                title={"Edit pet"}
-                module={"pet"}
+                title={"Edit store"}
+                module={"store"}
                 ></Header>
                 
                 <section className="content">
@@ -134,12 +131,12 @@ const EditPet = () => {
                                 <div className="card card-primary">
 
                                     <div className="card-header">
-                                        <h3 className="card-title">Edit Pet</h3>
+                                        <h3 className="card-title">Edit Store</h3>
                                     </div>
                                     <div className="card-body">
 
                                     <div className="form-group">
-                                            <label htmlFor="idPet">Pet id</label>
+                                            <label htmlFor="idPet">Store id</label>
                                             <input type="text" 
                                             id="idPet" 
                                             name="idPet" 
@@ -149,41 +146,27 @@ const EditPet = () => {
                                     </div>
 
                                     <div className="form-group">
-                                            <label htmlFor="name">Pet name</label>
+                                            <label htmlFor="quantity">Store quantity</label>
                                             <input type="text" 
-                                            id="name" 
-                                            name="name" 
-                                            value={ name }
+                                            id="quantity" 
+                                            name="quantity" 
+                                            value={ quantity }
                                             onChange = { onChange }
                                             required/>
                                     </div>
 
                                     <div className="form-group">
-                                            <label htmlFor="category">Category</label>
-                                            <select id="category" name="category" 
-                                            className="form-control custom-select"
-                                            value={ category }
-                                            onChange = { onChange }
-                                            required >
-                                                <option value={""} defaultValue disabled>Select one</option>
-                                                <option value={"Dogs"}> Dogs</option>
-                                                <option value={"Cats"}> Cats</option>
-                                                <option value={"Others"}> Others</option>
-                                            </select>
-                                        </div>
-
-                                        <div className="form-group">
-                                            <label htmlFor="photoUrls">Pet photoUrls</label>
+                                            <label htmlFor="address">Store address</label>
                                             <input type="text" 
-                                            id="photoUrls" 
-                                            name="photoUrls" 
-                                            value={ photoUrls }
+                                            id="address" 
+                                            name="address" 
+                                            value={ address }
                                             onChange = { onChange }
                                             required/>
                                         </div>
                                         
                                         <div className="form-group">
-                                            <label htmlFor="price">Pet price</label>
+                                            <label htmlFor="price">Store price</label>
                                             <input type="number" 
                                             id="price" 
                                             name="price" 
@@ -206,7 +189,7 @@ const EditPet = () => {
                                         </div>
                         
                                         <div className="offset-4 col-md-4">
-                                            <Link to={"/admin/pets"} className="btn btn-secondary">Cancel</Link>
+                                            <Link to={"/admin/stores"} className="btn btn-secondary">Cancel</Link>
                                             &nbsp;
                                             <button type='submit' className="btn btn-success"> Save </button>
                                         </div>
@@ -231,4 +214,4 @@ const EditPet = () => {
     )
 }
 
-export default EditPet
+export default EditStore
